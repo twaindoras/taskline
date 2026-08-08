@@ -1,0 +1,10 @@
+{
+  "name": "taskline",
+  "version": "1.0.0",
+  "description": "A small, real task manager with priorities, due dates, and filtering — vanilla JS + Supabase.",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "start": "npx serve ."
+  },
+  "license": "MIT"
+}

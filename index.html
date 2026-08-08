@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Taskline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<script>
+  window.__env = {
+    SUPABASE_URL:      "https://eijegtikhnxjhofxdfwq.supabase.co",
+    SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpamVndGlraG54amhvZnhkZndxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDk3OTgsImV4cCI6MjA5NTgyNTc5OH0.0PzySvMMqWuzRlM6zxC6Am-84WW7q4C17IgvrYK812Q"
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+
+<div class="rail"></div>
+
+<header class="topbar">
+  <div class="wordmark"><span class="dot"></span>Taskline</div>
+  <div id="authArea" class="auth-area">
+    <button class="btn-ghost" id="signInBtn">Sign in</button>
+    <button class="btn-primary" id="signUpBtn">Create account</button>
+  </div>
+  <div id="userArea" class="auth-area" style="display:none">
+    <span class="user-email" id="userEmail"></span>
+    <button class="btn-ghost" id="signOutBtn">Sign out</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="signedOut" class="empty-state">
+    <h1>A line through your day.</h1>
+    <p>Taskline is a small, real task manager — sign in to create tasks, set priorities and due dates, and track what's overdue.</p>
+    <button class="btn-primary btn-large" id="ctaSignUp">Create a free account</button>
+    <p class="fine-print">Or <a href="https://github.com/YOUR_USERNAME/taskline" target="_blank">view the source on GitHub</a>.</p>
+  </section>
+
+  <section id="signedIn" class="board" style="display:none">
+    <div class="summary-row" id="summaryRow"></div>
+
+    <form id="taskForm" class="task-form">
+      <input type="text" id="taskTitle" placeholder="What needs doing?" required maxlength="200"/>
+      <input type="text" id="taskCategory" placeholder="Category (optional)" maxlength="40" list="categoryList"/>
+      <datalist id="categoryList"></datalist>
+      <select id="taskPriority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <input type="date" id="taskDue"/>
+      <button type="submit" class="btn-primary">Add task</button>
+    </form>
+
+    <div class="filter-row">
+      <div class="seg" id="statusFilter">
+        <button class="seg-btn active" data-value="all">All</button>
+        <button class="seg-btn" data-value="active">Active</button>
+        <button class="seg-btn" data-value="done">Done</button>
+      </div>
+      <select id="categoryFilter" class="cat-filter">
+        <option value="all">All categories</option>
+      </select>
+    </div>
+
+    <ul id="taskList" class="task-list"></ul>
+    <p id="emptyMsg" class="empty-msg" style="display:none">No tasks match this view yet.</p>
+  </section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="task-utils.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
