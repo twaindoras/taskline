@@ -2,7 +2,7 @@
 
 A small, real task manager: create tasks with a priority and due date, mark them done, filter by status or category, and see what's overdue at a glance. Built as a focused single-page app — no framework, no build step, no third-party payment integration to distract from the core feature.
 
-**Live demo:** _add your deployed URL here_
+**Live demo:** https://taskline-self.vercel.app/
 
 ## What it does
 
